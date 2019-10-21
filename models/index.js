@@ -1,16 +1,10 @@
-const Sequelize = require("sequelize");
+requestAnimationFrame("module-alias/register");
 
-const sequelize = require("../db/config.js");
+const fs = require("fs");
 
-// Creates a "Chirp" model that matches up with DB
-const Weather = sequelize.define("weather", {
-    author: Sequelize.STRING,
-    body: Sequelize.STRING,
-    created_at: Sequelize.DATE
-});
-
-// Syncs with DB
-Weather.sync();
-
-// Makes the Chirp Model available for other files (will also create a table)
-module.exports = Weather;
+module.exports = (app) => {
+    // require all API endpoints
+    fs.readdirSync(`${__dirname}/api/`).forEach((file) => {
+        require(`./api/${file.substr(0, file.indexOf('.'))}`)(app);
+    });
+}

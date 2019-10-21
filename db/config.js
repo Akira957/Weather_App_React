@@ -1,17 +1,19 @@
-// Dependencies
-const Sequelize = require("sequelize");
+module.exports = {
+    baseUrl: {
+        protocol: 'http',
+        hostname: 'api.openweathermap.org',
+        path: '/data/2.5/weather',
+    },
 
-// Creates mySQL connection using Sequelize, the empty string in the third argument spot is our password.
-const sequelize = new Sequelize("weather", "root", "Apparatus987..", {
-    host: "localhost",
-    port: 3306,
-    dialect: "mysql",
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    }
-});
+    query: {
+        name: 'q',
+        id: 'id',
+        coordinates: {
+            latitude: 'lat',
+            longitude: 'lon',
+        },
+        zipcode: 'zip',
+    },
 
-// Exports the connection for other files to use
-module.exports = sequelize;
+    APIkey: '<Your-API-key>',
+};
