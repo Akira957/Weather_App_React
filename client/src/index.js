@@ -8,8 +8,8 @@ import { Provider } from 'react-redux';
 import store from './store/index';
 
 // Views
-import { App, ErrorDisplay } from './views/Components/index';
-import { Home, CurrentWeather } from './views/Containers/index';
+import { App, ErrorDisplay } from "./views/components/index";
+import { Home, CurrentWeather } from "./views/containers/index";
 
 ReactDOM.render(
     <Provider store={store}>
